@@ -26,7 +26,7 @@ public class ShopItem {
     @Column(name = "condition")
     private Condition condition;
 
-    @Column(name = "condition")
+    @Column(name = "location")
     private String location;
 
     @Column(name = "description")
@@ -36,8 +36,13 @@ public class ShopItem {
     @JoinColumn(name="category")
     private Category category;
 
-    public ShopItem(int id, String name, int nom_number, String manufacturer, String model, Condition condition, String location, String description) {
-        this.id = id;
+    public ShopItem(String name,
+                    int nom_number,
+                    String manufacturer,
+                    String model,
+                    Condition condition,
+                    String location,
+                    String description) {
         this.name = name;
         this.nom_number = nom_number;
         this.manufacturer = manufacturer;

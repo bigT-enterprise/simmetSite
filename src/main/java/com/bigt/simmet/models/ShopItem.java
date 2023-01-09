@@ -3,7 +3,7 @@ package com.bigt.simmet.models;
 import com.bigt.simmet.models.enums.Condition;
 import jakarta.persistence.*;
 
-@Entity
+@Entity(name = "ShopItem")
 @Table(name = "shop_items")
 public class ShopItem {
     @Id

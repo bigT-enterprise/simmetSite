@@ -4,7 +4,6 @@ import com.bigt.simmet.models.Category;
 import com.bigt.simmet.models.ShopItem;
 import com.bigt.simmet.repositories.contracts.ShopItemRepository;
 import com.bigt.simmet.services.contracts.ShopItemService;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +12,7 @@ import java.util.List;
 @Service
 public class ShopItemServiceImpl implements ShopItemService {
 
-    private ShopItemRepository repository;
+    private final ShopItemRepository repository;
 
     @Autowired
     public ShopItemServiceImpl(ShopItemRepository repository) {
@@ -33,7 +32,7 @@ public class ShopItemServiceImpl implements ShopItemService {
 
     @Override
     public ShopItem getById(int id) {
-            return repository.getReferenceById(id);
+        return repository.getReferenceById(id);
     }
 
     @Override

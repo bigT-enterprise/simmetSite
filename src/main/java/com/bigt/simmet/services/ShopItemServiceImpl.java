@@ -38,7 +38,7 @@ public class ShopItemServiceImpl implements ShopItemService {
 
     @Override
     public ShopItem getByName(String name) {
-        return null;
+        return repository.findByName(name);
     }
 
     @Override

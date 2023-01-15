@@ -1,4 +1,4 @@
-package com.bigt.simmet.models.mappers;
+package com.bigt.simmet.utils.mappers;
 
 import com.bigt.simmet.models.Service;
 import com.bigt.simmet.models.dtos.ServiceDto;

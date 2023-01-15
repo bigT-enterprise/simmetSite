@@ -2,7 +2,7 @@ package com.bigt.simmet.controllers.rest;
 
 import com.bigt.simmet.models.Service;
 import com.bigt.simmet.models.dtos.ServiceDto;
-import com.bigt.simmet.models.mappers.ServiceMapper;
+import com.bigt.simmet.utils.mappers.ServiceMapper;
 import com.bigt.simmet.services.contracts.ServicesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

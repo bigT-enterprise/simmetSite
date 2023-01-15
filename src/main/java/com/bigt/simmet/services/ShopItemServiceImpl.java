@@ -32,7 +32,7 @@ public class ShopItemServiceImpl implements ShopItemService {
 
     @Override
     public ShopItem getById(int id) {
-            return repository.getReferenceById(id);
+        return repository.getReferenceById(id);
     }
 
     @Override

@@ -23,7 +23,7 @@ public class ShopItem {
     private String name;
 
     @Column(name = "nom_number")
-    private int nom_number;
+    private int nomNumber;
 
     @Column(name = "manufacturer")
     private String manufacturer;
@@ -43,4 +43,22 @@ public class ShopItem {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "category")
     private Category category;
+
+    public ShopItem(String name,
+                    int nomNumber,
+                    String manufacturer,
+                    String model,
+                    Condition condition,
+                    String location,
+                    String description,
+                    Category category) {
+        this.name = name;
+        this.nomNumber = nomNumber;
+        this.manufacturer = manufacturer;
+        this.model = model;
+        this.condition = condition;
+        this.location = location;
+        this.description = description;
+        this.category = category;
+    }
 }

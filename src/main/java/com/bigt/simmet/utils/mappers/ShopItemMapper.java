@@ -16,7 +16,7 @@ public class ShopItemMapper {
     public ShopItem fromDto(ShopItemDto dto) {
         return ShopItem.builder()
                 .name(dto.getName())
-                .nom_number(dto.getNom_number())
+                .nomNumber(dto.getNomNumber())
                 .manufacturer(dto.getManufacturer())
                 .model(dto.getModel())
                 .condition(dto.getCondition())

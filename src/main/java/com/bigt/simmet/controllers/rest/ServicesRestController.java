@@ -2,10 +2,14 @@ package com.bigt.simmet.controllers.rest;
 
 import com.bigt.simmet.models.Service;
 import com.bigt.simmet.models.dtos.ServiceDto;
+import com.bigt.simmet.utils.exceptions.EntityIsNullException;
+import com.bigt.simmet.utils.exceptions.NoSuchEntityException;
 import com.bigt.simmet.utils.mappers.ServiceMapper;
 import com.bigt.simmet.services.contracts.ServicesService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -29,12 +33,20 @@ public class ServicesRestController {
 
     @GetMapping("/id/{id}")
     public Service getById(@PathVariable int id) {
-        return service.getById(id);
+        try {
+            return service.getById(id);
+        } catch (NoSuchEntityException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+        }
     }
 
     @GetMapping("/name/{name}")
     public Service getByName(@PathVariable String name) {
-        return service.getByName(name);
+        try {
+            return service.getByName(name);
+        } catch (NoSuchEntityException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+        }
     }
 
     @PostMapping("/create")
@@ -51,6 +63,12 @@ public class ServicesRestController {
 
     @DeleteMapping("/delete/{id}")
     public void deleteService(@PathVariable int id) {
+        try {
         service.deleteService(service.getById(id));
+        } catch (NoSuchEntityException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+        } catch (EntityIsNullException e) {
+            throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY, e.getMessage());
+        }
     }
 }

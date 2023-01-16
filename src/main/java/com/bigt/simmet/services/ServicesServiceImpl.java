@@ -3,6 +3,10 @@ package com.bigt.simmet.services;
 import com.bigt.simmet.models.Service;
 import com.bigt.simmet.repositories.contracts.ServiceRepository;
 import com.bigt.simmet.services.contracts.ServicesService;
+import com.bigt.simmet.utils.exceptions.EntityIsNullException;
+import com.bigt.simmet.utils.exceptions.NoSuchEntityException;
+import jakarta.persistence.EntityNotFoundException;
+import org.hibernate.dialect.lock.OptimisticEntityLockException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
@@ -24,12 +28,20 @@ public class ServicesServiceImpl implements ServicesService {
 
     @Override
     public Service getById(int id) {
+        try {
         return repository.getReferenceById(id);
+        } catch (EntityNotFoundException e){
+            throw new NoSuchEntityException("Service with " + id + "does not exist");
+        }
     }
 
     @Override
     public Service getByName(String name) {
-        return repository.findByName(name);
+        try {
+            return repository.findByName(name);
+        } catch (EntityNotFoundException e){
+            throw new NoSuchEntityException("Service with " + name + "does not exist");
+        }
     }
 
     @Override
@@ -44,6 +56,12 @@ public class ServicesServiceImpl implements ServicesService {
 
     @Override
     public void deleteService(Service item) {
-        repository.delete(item);
+        try {
+            repository.delete(item);
+        } catch (OptimisticEntityLockException e) {
+            throw new NoSuchEntityException("The Service you are trying to delete does not exist!");
+        } catch (IllegalArgumentException e) {
+            throw new EntityIsNullException("You are trying to delete a null Service");
+        }
     }
 }

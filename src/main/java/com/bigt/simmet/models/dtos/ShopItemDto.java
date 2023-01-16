@@ -1,6 +1,5 @@
 package com.bigt.simmet.models.dtos;
 
-import com.bigt.simmet.models.Category;
 import com.bigt.simmet.models.enums.Condition;
 import lombok.Getter;
 import lombok.Setter;

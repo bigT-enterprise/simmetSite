@@ -10,7 +10,7 @@ public class ShopItemDto {
 
     private String name;
 
-    private int nom_number;
+    private int nomNumber;
 
     private String manufacturer;
 

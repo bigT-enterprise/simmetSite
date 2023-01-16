@@ -23,7 +23,7 @@ public class ShopItem {
     private String name;
 
     @Column(name = "nom_number")
-    private int nom_number;
+    private int nomNumber;
 
     @Column(name = "manufacturer")
     private String manufacturer;
@@ -45,7 +45,7 @@ public class ShopItem {
     private Category category;
 
     public ShopItem(String name,
-                    int nom_number,
+                    int nomNumber,
                     String manufacturer,
                     String model,
                     Condition condition,
@@ -53,7 +53,7 @@ public class ShopItem {
                     String description,
                     Category category) {
         this.name = name;
-        this.nom_number = nom_number;
+        this.nomNumber = nomNumber;
         this.manufacturer = manufacturer;
         this.model = model;
         this.condition = condition;
